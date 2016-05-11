@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import java.util.ArrayList;
 
 public class ArtificialIntelligence {
-    private ArrayList<Button> buttonList;
+    private final ArrayList<Button> buttonList;
 
     public ArtificialIntelligence(ArrayList<Button> listButton) {
         buttonList = listButton;
@@ -18,11 +18,7 @@ public class ArtificialIntelligence {
 
         while (boolRepeat) {
             intRand = (int) (Math.random() * 9);
-            if (buttonList.get(intRand).isDisabled()) {
-                boolRepeat = true;
-            } else {
-                boolRepeat = false;
-            }
+            boolRepeat = buttonList.get(intRand).isDisabled();
         }
 
         return intRand;

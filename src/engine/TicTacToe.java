@@ -3,7 +3,7 @@ package engine;
 public class TicTacToe {
     // Game Variables
 
-    private int[][] arrBoard = new int[3][3];
+    private final int[][] arrBoard = new int[3][3];
     private int intPlayerScore, intComputerScore;
     private boolean boolPlayer, boolComputer, boolDraw;
     private int intDrawCtr;
@@ -44,18 +44,9 @@ public class TicTacToe {
         }
     }
 
-    public boolean pick(int intRow, int intCol, int intCode) {
-        boolean boolSuccess;
-
-        if (arrBoard[intRow][intCol] == 0) {
-            arrBoard[intRow][intCol] = intCode;
-            boolSuccess = true;
-            intDrawCtr++;
-        } else {
-            boolSuccess = false;
-        }
-
-        return boolSuccess;
+    public void pick(int intRow, int intCol, int intCode) {
+        arrBoard[intRow][intCol] = intCode;
+        intDrawCtr++;
     }
 
     public int checkWin() {

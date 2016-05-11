@@ -1,13 +1,13 @@
 package controllers;
 
+import engine.ArtificialIntelligence;
+import engine.TicTacToe;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import engine.ArtificialIntelligence;
-import engine.TicTacToe;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,31 +17,25 @@ public class MainController implements Initializable {
 
     // Scene Elements
 
+    private final TicTacToe tictactoe = new TicTacToe();
+    private final Alert alertPop = new Alert(Alert.AlertType.INFORMATION);
+    private final ArrayList<Button> listButton = new ArrayList<>();
     @FXML
     private Button buttonPlay;
-
     @FXML
     private Pane paneEntrance;
-
     @FXML
     private RadioButton radioEasy, radioHard;
-
-    @FXML
-    private GridPane gridBoard;
-
-    @FXML
-    private TextField textUsername;
-
-    @FXML
-    private Label labelUsername, labelPlayerScore, labelComputerScore;
 
     // End of Scene Elements
 
     // Game Start!
-
-    private TicTacToe tictactoe = new TicTacToe();
-    private Alert alertPop = new Alert(Alert.AlertType.INFORMATION);
-    private ArrayList<Button> listButton = new ArrayList<Button>();
+    @FXML
+    private GridPane gridBoard;
+    @FXML
+    private TextField textUsername;
+    @FXML
+    private Label labelUsername, labelPlayerScore, labelComputerScore;
     private AnimationController animControl;
     private GridPaneController gridControl;
     private ArtificialIntelligence AI;
@@ -82,7 +76,7 @@ public class MainController implements Initializable {
         }
     }
 
-    public void buttonPlayAction(ActionEvent actionEvent) throws InterruptedException {
+    public void buttonPlayAction() {
         if (buttonPlay.getText().equals("PLAY")) {
             animControl.entranceAction(1.0, 0.0, "QUIT", gridBoard, paneEntrance);
             tictactoe.setBoard();
@@ -99,9 +93,9 @@ public class MainController implements Initializable {
         labelComputerScore.setText("0");
     }
 
-    public void gridButtonAction(ActionEvent actionEvent) {
+    private void gridButtonAction(ActionEvent actionEvent) {
         Button buttonClicked = (Button)actionEvent.getSource();
-        int intRow = gridBoard.getRowIndex(buttonClicked), intCol = gridBoard.getColumnIndex(buttonClicked);
+        int intRow = GridPane.getRowIndex(buttonClicked), intCol = GridPane.getColumnIndex(buttonClicked);
         int intPos;
 
         buttonClicked.setText("0");

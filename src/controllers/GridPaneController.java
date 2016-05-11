@@ -8,9 +8,9 @@ import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 
-public class GridPaneController {
-    private GridPane gridBoard;
-    private ArrayList<Button> listButton;
+class GridPaneController {
+    private final GridPane gridBoard;
+    private final ArrayList<Button> listButton;
 
     public GridPaneController(GridPane gridPane, ArrayList<Button> buttonList) {
         listButton = buttonList;

@@ -6,10 +6,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
-public class AnimationController {
-    private Pane paneEntrance;
-    private GridPane gridBoard;
-    private Button buttonPlay;
+class AnimationController {
+    private final Pane paneEntrance;
+    private final GridPane gridBoard;
+    private final Button buttonPlay;
 
     public AnimationController (Pane pane, GridPane gridPane, Button button) {
         paneEntrance = pane;
@@ -17,7 +17,7 @@ public class AnimationController {
         buttonPlay = button;
     }
 
-    public void entranceAction(double dblFrom, double dblTo, String strButton, Pane paneEnable, Pane paneDisable) throws InterruptedException {
+    public void entranceAction(double dblFrom, double dblTo, String strButton, Pane paneEnable, Pane paneDisable) {
         FadeTransition fadeEntranceControl = new FadeTransition(Duration.millis(500), paneEntrance);
         FadeTransition fadeBoardControl = new FadeTransition(Duration.millis(500), gridBoard);
         fadeEntranceControl.setFromValue(dblFrom);
